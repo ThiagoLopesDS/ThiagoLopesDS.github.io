@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #b4b4b4;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    background: #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    font-weight: 600;
+    color: blue;
+    text-decoration: none;
+    font-size: 2rem;
+}
+.nav {
+    padding: 10px;
+    font-size: 1.6rem;
+    display: flex;
+    gap: 90px;
+}
+.nav a {
+    color: rgb(109, 109, 239);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+p {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+}
