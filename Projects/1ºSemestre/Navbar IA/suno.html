@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Animada</title>
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --navbar: #1a1a2e;
+      --link: #00fff7;
+      --link-hover: #7effa1;
+      --btn: #9d4edd;
+      --dev-bg: #1a1a2e;
+      --detail-text: #c77dff;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--white);
+    }
+
+    nav {
+      background-color: var(--navbar);
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--link);
+      text-shadow: 0 0 5px var(--link);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .menu a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: var(--link-hover);
+      text-shadow: 0 0 8px var(--link-hover);
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .search-container input {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+      background-color: #333;
+      color: var(--white);
+      transition: 0.3s ease;
+    }
+
+    .search-container input:focus {
+      outline: 2px solid var(--btn);
+    }
+
+    .search-container button {
+      padding: 6px 12px;
+      background-color: var(--btn);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 0 5px var(--btn);
+      transition: 0.3s ease;
+    }
+
+    .search-container button:hover {
+      background-color: var(--link-hover);
+      color: #111;
+      box-shadow: 0 0 10px var(--link-hover);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background-color: var(--link);
+      margin: 5px 0;
+      transition: all 0.4s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 15px;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .search-container input {
+        width: 100%;
+      }
+    }
+
+    main {
+      padding: 25px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      margin: 20px 0;
+      border: 2px solid var(--link);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.01);
+    }
+
+    section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-in-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      color: var(--detail-text);
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px var(--detail-text);
+    }
+
+    details {
+      background-color: var(--dev-bg);
+      margin: 15px 0;
+      padding: 15px;
+      border-left: 4px solid var(--btn);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      color: var(--link-hover);
+      transition: 0.3s ease;
+    }
+
+    summary:hover {
+      color: var(--link);
+    }
+
+    .dev-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .dev-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--btn);
+      box-shadow: 0 0 10px var(--btn);
+      transition: 0.3s ease;
+    }
+
+    .dev-info img:hover {
+      transform: rotate(2deg) scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scaleY(0); }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">TechNav</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="gpt.html">ChatGPT</a>
+      <a href="gemini.html">Gemini</a>
+      <a href="synthesia.html">Synthesia</a>
+      <a href="suno.html">Suno</a>
+      <a href="devs.html">Desenvolvedores</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Pesquisar no Google">
+        <button onclick="pesquisar()">🔍</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h2>Home</h2>
+      <p>Bem-vindo ao portal de ferramentas de IA e desenvolvimento.</p>
+    </section>
+  <section id="suno">
+  <h2>Suno AI</h2>
+  <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+    <img 
+      src="SUNO 03.jpg" 
+      alt="Logo Suno AI" 
+      style="width: 180px; max-width: 80%; filter: drop-shadow(0 0 10px #ff69b4);" 
+    />
+
+    <p style="max-width: 800px; font-size: 1.1em; line-height: 1.6;">
+      <strong>Suno AI</strong> é uma inteligência artificial especializada na <strong>criação de músicas originais</strong> a partir de texto. Basta digitar uma descrição ou letra que a IA compõe a música com melodia, arranjos e até vocais. É uma ferramenta ideal para <strong>artistas, criadores de conteúdo e desenvolvedores</strong> que desejam trilhas sonoras únicas sem depender de direitos autorais.
+    </p>
+
+    <a 
+      href="https://www.suno.ai/" 
+      target="_blank" 
+      style="padding: 12px 24px; background-color: #ff69b4; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; transition: 0.3s ease; box-shadow: 0 0 15px #ff69b4;">
+      Acessar Suno
+    </a>
+  </div>
+</section>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+    }
+
+    function pesquisar() {
+      const termo = document.getElementById('searchInput').value.trim();
+      if (termo) {
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
+      }
+    }
+
+    // Mostrar seções com efeito reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>

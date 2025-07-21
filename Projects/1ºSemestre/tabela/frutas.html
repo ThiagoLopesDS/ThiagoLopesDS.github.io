@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela com navbar💻</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: #F5F5DC;
+
+        }
+        .navbar{
+            width: 200px;
+            background-color: #A5D6A7;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 40px;
+            position:fixed;
+            left: 0;
+            top: 0;
+        }
+        .navbar a {
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #2E7D32;
+            font-size: 18px;
+
+        }
+        .navbar a:hover {
+            background-color:#81D4FA;
+        }
+        .conteudo {
+            align-items: center;
+            justify-content: right;
+            padding: 10px 10px;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            height: 100vh;
+            margin-right: 400px;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            left: 250px;
+            top: 10px;
+
+        }
+        .conteudo p{
+            font-size: 20px;
+        }
+        table {
+            width: 200px;
+            border: solid;
+            color: #000000;
+            }
+        thead {
+            background-color: #f6f378;
+            }
+        th,td{  
+                border: 3px solid ;
+                color: #000000;
+                font-weight: bold;
+                padding: 30px;
+                text-align: left;
+                width: 1100px;
+                font-size: 20px;
+                align-items: center;
+            }
+        img {
+                 width: 100px;
+                 height: 100px;
+                 border-radius: 50%;
+                 background-color: #f6f378;
+                 color: #f6f378;
+             }
+
+    </style>
+</head>
+<body> 
+    <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="caes.html">Raças de Cães</a>
+            <a href="futebol.html">Jogadores de Futebol</a>
+            <a href="frutas.html">Frutas</a>
+           <a href="desenvolvedores.html">Desenvolvedores</a>
+    </div>      
+    <div class="conteudo">
+        <h1><strong>🍓Tabelas de frutas</strong></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>🍎Nome</th>
+                    <th>🍞Carboidratos</th>
+                    <th>🔥Calorias</th>
+                    <th>📷Foto</th>
+                </tr>   
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Maça</td>
+                    <td>14g</td>
+                    <td>52 kcal</td>
+                    <td><img src="img/imagem maça.jpeg" alt="Maça"></td>
+                </tr>
+                <tr>
+                    <td>Banana</td>
+                    <td>23g</td>
+                    <td>83 kcal</td>
+                    <td><img src="img/imagem banana.jpeg" alt="Banana"></td>
+                </tr>
+                <tr>
+                    <td>Abacaxi</td>
+                    <td>13g</td>
+                    <td>50 kcal</td>
+                    <td><img src="img/imagem abacaxi.jpeg" alt="Abacaxi"></td>
+                </tr>
+                <tr>
+                    <td>Melancia</td>
+                    <td>8g</td>
+                    <td>30 kcal</td>
+                    <td><img src="img/imagem melancia.jpg" alt="Melancia"></td>
+                </tr>
+                <tr>
+                    <td>Manga</td>
+                    <td>15g</td>
+                    <td>60 kcal</td>
+                    <td><img src="img/imagem manga.jpg" alt="Manga"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

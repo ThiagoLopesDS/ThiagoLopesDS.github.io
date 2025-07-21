@@ -1,0 +1,45 @@
+button{
+    width: 70px;
+    height: 50px;
+    border-radius: 5px;
+    border-color: black;
+    font-size: 90%;
+    border-width: 5px;
+
+}
+button:not(.ultimo) { 
+    margin-bottom: 900px;
+
+}
+.main {
+    background-color: rgb(230, 230, 230);
+    width: 650px;
+    margin-top: 0;
+    padding: 25px;      
+    margin: 0 auto 0 auto;
+    border-radius: 10px;
+    font-size: 120%;
+}
+body{
+    margin: 15px;
+    background-color: rgb(51, 51, 51);
+    
+}
+a, a:active a:visited {
+    text-decoration: none;
+    color: blue;
+}
+a:hover {
+    color: rgb(0, 0, 119);
+}
+img{
+    padding: 0;
+    align-self: right;
+    width: 100px;
+    height: 200px;
+    border-radius: 10px;
+    margin: 0;
+    display: block;
+    margin-top: 10px;
+    border: 40px;
+}

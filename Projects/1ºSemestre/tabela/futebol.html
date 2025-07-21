@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela com navbar💻</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: #F5F5DC;
+
+        }
+        .navbar{
+            width: 200px;
+            background-color: #A5D6A7;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 40px;
+            position:fixed;
+            left: 0;
+            top: 0;
+        }
+        .navbar a {
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #2E7D32;
+            font-size: 18px;
+
+        }
+        .navbar a:hover {
+            background-color:#81D4FA;
+        }
+        .conteudo {
+            align-items: center;
+            justify-content: right;
+            padding: 10px 10px;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            height: 100vh;
+            margin-right: 400px;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            left: 250px;
+            top: 10px;
+
+        }
+        .conteudo p {
+            font-size: 20px;
+        }
+            table{
+                width: 15px;
+                border: solid;
+                color: #000000;
+            }
+            thead{
+                background-color: #f6f378;
+            }
+            th,td{
+                border: 3px solid ;
+                color: #000000;
+                font-weight: bold;
+                padding: 20px;
+                text-align: left;
+                width: 1100px;
+            }
+             img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+             }
+           
+    </style>
+</head>
+<body> 
+    <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="caes.html">Raças de Cães</a>
+            <a href="futebol.html">Jogadores de Futebol</a>
+            <a href="frutas.html">Frutas</a>
+           <a href="desenvolvedores.html">Desenvolvedores</a>
+    </div>      
+    <div class="conteudo">
+        <h1><strong>⚽5 Jogadores de Futebol</strong></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>🧑‍💼Nome</th>
+                    <th>🎂idade</th>
+                    <th>🎯Posição</th>
+                    <th>🏟️Clube</th>
+                    <th>🖼️ Foto</th>
+                </tr>   
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lionel Messi</td>
+                    <td>36</td>
+                    <td>Atacante</td>
+                    <td>Inter de Miami</td>
+                    <td><img src="img/imagem lionel messi.jpg" alt="Lionel Messi"></td>
+                </tr>
+                <tr>
+                    <td>Kylian Mbappé</td>
+                    <td>25</td>
+                    <td>Atacante</td>
+                    <td>Real Madrid(2025)</td>
+                    <td><img src="img/imagem mbappe.jpg" alt="Kylian Mbappé"></td>
+                </tr>
+                <tr>
+                    <td>Erling Haaland</td>
+                    <td>24</td>
+                    <td>Atacante</td>
+                    <td>Manchester City</td>
+                    <td><img src="img/imagem haaland.jpg" alt="Erling Haaland"></td>
+                </tr>
+                <tr>
+                    <td>Kevin de Bruyne</td>
+                    <td>33</td>
+                    <td>Meio-campista</td>
+                    <td>Manchester City</td>
+                    <td><img src="img/imagem kevin de bruyne.jpg" alt="Kevin de Bruyne"></td>
+                </tr>
+                <tr>
+                    <td>Vinícius Júnior</td>
+                    <td>24</td>
+                    <td>Atacante</td>
+                    <td>Real Madrid</td>
+                    <td><img src="img/imagem vinicius junior.jpg" alt="Vinícius junior"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

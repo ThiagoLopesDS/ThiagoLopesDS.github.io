@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar Animada</title>
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --navbar: #1a1a2e;
+      --link: #00fff7;
+      --link-hover: #7effa1;
+      --btn: #9d4edd;
+      --dev-bg: #1a1a2e;
+      --detail-text: #c77dff;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--white);
+    }
+
+    nav {
+      background-color: var(--navbar);
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: var(--link);
+      text-shadow: 0 0 5px var(--link);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .menu a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: var(--link-hover);
+      text-shadow: 0 0 8px var(--link-hover);
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .search-container input {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+      background-color: #333;
+      color: var(--white);
+      transition: 0.3s ease;
+    }
+
+    .search-container input:focus {
+      outline: 2px solid var(--btn);
+    }
+
+    .search-container button {
+      padding: 6px 12px;
+      background-color: var(--btn);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 0 5px var(--btn);
+      transition: 0.3s ease;
+    }
+
+    .search-container button:hover {
+      background-color: var(--link-hover);
+      color: #111;
+      box-shadow: 0 0 10px var(--link-hover);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background-color: var(--link);
+      margin: 5px 0;
+      transition: all 0.4s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 15px;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .search-container input {
+        width: 100%;
+      }
+    }
+
+    main {
+      padding: 25px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      margin: 20px 0;
+      border: 2px solid var(--link);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.01);
+    }
+
+    section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-in-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      color: var(--detail-text);
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px var(--detail-text);
+    }
+
+    details {
+      background-color: var(--dev-bg);
+      margin: 15px 0;
+      padding: 15px;
+      border-left: 4px solid var(--btn);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      color: var(--link-hover);
+      transition: 0.3s ease;
+    }
+
+    summary:hover {
+      color: var(--link);
+    }
+
+    .dev-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .dev-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--btn);
+      box-shadow: 0 0 10px var(--btn);
+      transition: 0.3s ease;
+    }
+
+    .dev-info img:hover {
+      transform: rotate(2deg) scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scaleY(0); }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">TechNav</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="gpt.html">ChatGPT</a>
+      <a href="gemini.html">Gemini</a>
+      <a href="synthesia.html">Synthesia</a>
+      <a href="suno.html">Suno</a>
+      <a href="devs.html">Desenvolvedores</a>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Pesquisar no Google">
+        <button onclick="pesquisar()">🔍</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h2>Home</h2>
+      <p>Bem-vindo ao portal de ferramentas de IA e desenvolvimento.</p>
+    </section>
+<section id="desenvolvedores">
+  <h2>Desenvolvedores</h2>
+  <div style="max-width: 900px; margin: auto; display: flex; flex-direction: column; gap: 20px;">
+
+    <details style="background-color: #1e1e2f; color: #fff; border-radius: 8px; padding: 16px; border: 1px solid #444; transition: 0.3s;">
+      <summary style="font-size: 1.2em; cursor: pointer;">👨‍💻 Thiago Lopes dos Santos - Front-End Developer</summary>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; margin-top: 15px; gap: 20px;">
+        <img src="img/Devs 02.jpg" alt="Thiago Lopes" style="width: 100px; border-radius: 50%;">
+        <p>
+         Estudante de Desenvolvimento de Sistemas na Etec Fernando Prestes, com foco em se tornar um engenheiro de software.
+         e abrir seu próprio negócio.
+        </p>
+        <a href="https://ThiagoLopesDS.github.io" target="_blank" style="color: var(--link); text-decoration: none; font-weight: bold;">Clique aqui para saber mais</a>
+      </div>
+    </details>
+
+    <details style="background-color: #1e1e2f; color: #fff; border-radius: 8px; padding: 16px; border: 1px solid #444; transition: 0.3s;">
+      <summary style="font-size: 1.2em; cursor: pointer;">Fábio Guedes da Silva Filho - Back-End Developer</summary>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; margin-top: 15px; gap: 20px;">
+        <img src="img/DEVS 03.jpg" alt="fabio" style="width: 100px; border-radius: 50%;">
+        <p> Desenvolvedor Estudante da Etec Fernando prestes, Extensão fatec. E bolsista na OBA (Olimpíada Brasileira de Astronomia e Astronáutica). 
+          Tem interesse em desenvolvimento de jogos, robótica e IA. 
+        </p>
+        <a href="https://fasefo.github.io" target="_blank" style="color: var(--link); text-decoration: none; font-weight: bold;">Clique aqui para saber mais</a> 
+      </div>
+    </details>
+  </div>
+</section>
+
+  </main>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+    }
+
+    function pesquisar() {
+      const termo = document.getElementById('searchInput').value.trim();
+      if (termo) {
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(termo)}`, "_blank");
+      }
+    }
+
+    // Mostrar seções com efeito reveal
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
